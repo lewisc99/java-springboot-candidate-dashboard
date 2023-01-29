@@ -38,7 +38,6 @@ public class CandidateController {
         Candidate candidate = candidateService.findById(id);
         CandidateDTO candidateDTO = candidateConvert.toCandidateDTO(candidate);
         model.addAttribute("candidate",candidateDTO);
-
         return "candidate/candidate-by-id";
     }
 }
