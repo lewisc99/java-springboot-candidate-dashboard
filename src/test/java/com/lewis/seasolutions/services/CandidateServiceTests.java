@@ -105,8 +105,8 @@ public class CandidateServiceTests {
     }
 
     @Test
-    @DisplayName("GetById return Candidate")
-    public void getByIdReturnCandidate()
+    @DisplayName("findById return Candidate")
+    public void findByIdReturnCandidate()
     {
         Long id = 1L;
         Optional<Candidate> candidateOptional = Optional.of(candidate);
@@ -118,6 +118,16 @@ public class CandidateServiceTests {
         assertEquals(candidate.getDoc(),  candidateEntity.getDoc());
         assertEquals(candidate.getPortfolio(), candidate.getPortfolio());
         assertEquals(candidate.getStateCode(), candidate.getStateCode());
+    }
+
+    @Test
+    @DisplayName("findById throw NullPointException")
+    public void findByIdThrowNullPointException()
+    {
+        Long id = 1L;
+        when(candidateRepository.findById(id)).thenThrow(NullPointerException.class);
+        assertThrows(NullPointerException.class, () -> {candidateService.findById(1L);});
+
     }
 
 }

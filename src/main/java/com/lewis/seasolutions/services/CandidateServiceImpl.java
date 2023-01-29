@@ -7,6 +7,7 @@ import com.lewis.seasolutions.services.contracts.CandidateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
+import java.sql.SQLDataException;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,11 +23,12 @@ public class CandidateServiceImpl implements CandidateService {
     }
 
     @Override
+    @Transactional
     public Candidate findById(Long id) {
        Optional<Candidate> candidate =  repository.findById(id);
        if(candidate.isEmpty())
        {
-           throw new NullPointerException();
+           throw new IndexOutOfBoundsException();
        }
        return candidate.get();
     }
