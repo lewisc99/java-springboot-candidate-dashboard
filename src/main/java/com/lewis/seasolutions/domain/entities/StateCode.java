@@ -4,7 +4,7 @@ package com.lewis.seasolutions.domain.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name="tb_candidate")
+@Table(name="tb_statecode")
 public class StateCode {
 
     @Id
