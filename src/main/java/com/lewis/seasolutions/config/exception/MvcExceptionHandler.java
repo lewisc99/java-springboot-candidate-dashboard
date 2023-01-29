@@ -13,5 +13,5 @@ public class MvcExceptionHandler {
     {
         return "candidate/error-not-found";
     }
-    
+
 }

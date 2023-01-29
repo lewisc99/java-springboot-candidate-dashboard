@@ -32,4 +32,10 @@ public class CandidateServiceImpl implements CandidateService {
        }
        return candidate.get();
     }
+
+    @Override
+    @Transactional
+    public void delete(Long id) {
+         repository.deleteById(id);
+    }
 }

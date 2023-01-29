@@ -8,4 +8,5 @@ public interface CandidateService {
 
     List<Candidate> findAll();
     Candidate findById(Long id);
+    void delete(Long id);
 }

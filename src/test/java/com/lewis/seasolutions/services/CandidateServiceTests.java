@@ -10,6 +10,7 @@ import com.lewis.seasolutions.services.contracts.CandidateService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -127,6 +128,16 @@ public class CandidateServiceTests {
         Long id = 1L;
         when(candidateRepository.findById(id)).thenThrow(NullPointerException.class);
         assertThrows(NullPointerException.class, () -> {candidateService.findById(1L);});
+    }
+
+    @Test
+    @DisplayName("delete Candidate")
+    public void DeleteCandidate()
+    {
+        Long id = 1L;
+        Mockito.doNothing().when(candidateRepository).deleteById(id);
+        candidateService.delete(id);
+        verify(candidateRepository,times(1)).deleteById(id);
     }
 
 }
