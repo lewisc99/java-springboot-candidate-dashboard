@@ -28,7 +28,7 @@ public class CandidateServiceImpl implements CandidateService {
        Optional<Candidate> candidate =  repository.findById(id);
        if(candidate.isEmpty())
        {
-           throw new IndexOutOfBoundsException();
+           throw new NullPointerException("Id not found: " + id);
        }
        return candidate.get();
     }

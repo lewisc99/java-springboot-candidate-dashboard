@@ -127,7 +127,6 @@ public class CandidateServiceTests {
         Long id = 1L;
         when(candidateRepository.findById(id)).thenThrow(NullPointerException.class);
         assertThrows(NullPointerException.class, () -> {candidateService.findById(1L);});
-
     }
 
 }
