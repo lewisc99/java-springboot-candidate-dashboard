@@ -40,4 +40,5 @@ public class CandidateController {
         model.addAttribute("candidate",candidateDTO);
         return "candidate/candidate-by-id";
     }
+
 }

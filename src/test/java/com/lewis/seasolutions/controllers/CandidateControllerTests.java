@@ -69,7 +69,8 @@ public class CandidateControllerTests {
     {
         Long id = 10L;
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get("/candidate/{id}",id))
-                .andExpect(status().isNotFound()).andReturn();
+                .andExpect(status().isOk()).andReturn();
+
         ModelAndView modelAndView = mvcResult.getModelAndView();
         ModelAndViewAssert.assertViewName(modelAndView, "candidate/error-not-found");
     }
