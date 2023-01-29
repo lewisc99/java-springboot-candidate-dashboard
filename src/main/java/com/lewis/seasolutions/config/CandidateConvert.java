@@ -19,6 +19,7 @@ public class CandidateConvert {
         for(Candidate candidate: candidatesEntity)
         {
             CandidateDTO userDTO = modelMapper.map(candidate, CandidateDTO.class);
+
             candidatesDTOS.add(userDTO);
         }
         return candidatesDTOS;
