@@ -70,4 +70,12 @@ public class Candidate {
     public void setPortfolio(String portfolio) {
         this.portfolio = portfolio;
     }
+
+    public StateCode getStateCode() {
+        return stateCode;
+    }
+
+    public void setStateCode(StateCode stateCode) {
+        this.stateCode = stateCode;
+    }
 }
