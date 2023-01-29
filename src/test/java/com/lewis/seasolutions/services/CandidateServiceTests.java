@@ -1,22 +1,28 @@
 package com.lewis.seasolutions.services;
 
 import com.lewis.seasolutions.SeaSolutionsApplication;
+import com.lewis.seasolutions.config.MockBeansConfiguration;
 import com.lewis.seasolutions.domain.entities.Candidate;
 import com.lewis.seasolutions.domain.entities.Role;
 import com.lewis.seasolutions.domain.entities.StateCode;
 import com.lewis.seasolutions.repositories.CandidateRepository;
 import com.lewis.seasolutions.services.contracts.CandidateService;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-
+import org.springframework.context.annotation.Import;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(classes = {SeaSolutionsApplication.class}, properties = {"spring.jpa.defer-datasource-initialization=false",
         "spring.profiles.active=test"})
+@Import(MockBeansConfiguration.class)
 public class CandidateServiceTests {
 
     @Autowired
@@ -76,7 +82,24 @@ public class CandidateServiceTests {
         candidateTwo.setStateCode(stateCodeTwo);
 
         candidates.addAll(Arrays.asList(candidate,candidateTwo));
+    }
 
+    @Test
+    @DisplayName("getAll return List Candidates")
+    public void getAllCandidates()
+    {
+        when(candidateRepository.findAll()).thenReturn(candidates);
+        List<Candidate> candidatesList = candidateService.findAll();
+        assertNotNull(candidatesList);
+        assertEquals(2, candidatesList.size() );
+    }
+
+    @Test
+    @DisplayName("getAll throw Runtime Exception")
+    public void getAllReturnException()
+    {
+        when(candidateRepository.findAll()).thenThrow(RuntimeException.class);
+        assertThrows(RuntimeException.class, () -> {candidateService.findAll();});
     }
 
 }
