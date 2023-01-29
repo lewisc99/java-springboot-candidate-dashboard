@@ -26,21 +26,19 @@
    		<th>Email</th>
    		<th>Doc</th>
    		<th>Role</th>
+   		<th></th>
    	</tr>
    	</thead>
    	<tbody>
-   	<c:forEach var="tempCandidates" items="${candidates}">
+   	<c:forEach var="tempCandidate" items="${candidates}">
    	<tr class="">
-   	<c:url var="updateLink" value="/customer/showFormForUpdate">
-   		<c:param name="CustomerId" value="${tempCandidates.id }" />
-   	</c:url>
-
-   	<td> ${tempCandidates.username }</td>
-   	<td> ${tempCandidates.email }</td>
-   	<td> ${tempCandidates.doc }</td>
-   	<td> ${tempCandidates.role.name }</td>
+   	<td> ${tempCandidate.username }</td>
+   	<td> ${tempCandidate.email }</td>
+   	<td> ${tempCandidate.doc }</td>
+   	<td> ${tempCandidate.role.name }</td>
    	<td>
-   	<!-- display the update link -->
+     	<a href="candidate/${tempCandidate.id}">Details</a>
+     	|
    		<a href="showFormForUpdate?id=${tempCustomer.id}">Update</a>
    		|
    		<a href="delete?id=${tempCustomer.id}"
