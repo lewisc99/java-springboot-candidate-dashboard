@@ -1,16 +1,7 @@
-package com.lewis.seasolutions.domain.entities;
+package com.lewis.seasolutions.domain.models;
 
+public class StateCodeModel {
 
-import javax.persistence.*;
-
-@Entity
-@Table(name="tb_statecode")
-public class StateCode {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
     private Long id;
     private String initials;
 
