@@ -1,11 +1,10 @@
 package com.lewis.seasolutions.repositories;
 
-
-import jdk.jfr.Category;
+import com.lewis.seasolutions.domain.entities.Candidate;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CandidateRepository extends JpaRepository<Category, Long> {
+public interface CandidateRepository extends JpaRepository<Candidate, Long> {
 
 }

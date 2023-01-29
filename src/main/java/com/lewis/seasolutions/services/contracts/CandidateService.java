@@ -1,8 +1,10 @@
 package com.lewis.seasolutions.services.contracts;
 
-import com.lewis.seasolutions.domain.models.CandidateModel;
+import com.lewis.seasolutions.domain.entities.Candidate;
+
+import java.util.List;
 
 public interface CandidateService {
 
-    CandidateModel get();
+    List<Candidate> findAll();
 }
