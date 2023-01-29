@@ -17,6 +17,8 @@ import org.springframework.context.annotation.Import;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
+
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -100,6 +102,22 @@ public class CandidateServiceTests {
     {
         when(candidateRepository.findAll()).thenThrow(RuntimeException.class);
         assertThrows(RuntimeException.class, () -> {candidateService.findAll();});
+    }
+
+    @Test
+    @DisplayName("GetById return Candidate")
+    public void getByIdReturnCandidate()
+    {
+        Long id = 1L;
+        Optional<Candidate> candidateOptional = Optional.of(candidate);
+        when(candidateRepository.findById(id)).thenReturn(candidateOptional);
+        Candidate candidateEntity = candidateService.findById(id);
+        assertNotNull(candidateEntity);
+        assertEquals(candidate.getEmail(),  candidateEntity.getEmail());
+        assertEquals(candidate.getId(),  candidateEntity.getId());
+        assertEquals(candidate.getDoc(),  candidateEntity.getDoc());
+        assertEquals(candidate.getPortfolio(), candidate.getPortfolio());
+        assertEquals(candidate.getStateCode(), candidate.getStateCode());
     }
 
 }
