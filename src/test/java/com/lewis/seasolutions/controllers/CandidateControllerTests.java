@@ -80,11 +80,11 @@ public class CandidateControllerTests {
     public void DeleteRemoveCandidate() throws Exception
     {
         Long id = 1L;
-        MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get("/candidate/{id}/delete",id))
+        MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.delete("/candidate/{id}/delete",id))
                 .andExpect(status().isOk()).andReturn();
 
         ModelAndView modelAndView = mvcResult.getModelAndView();
-        ModelAndViewAssert.assertViewName(modelAndView, "/");
+        ModelAndViewAssert.assertViewName(modelAndView, "redirect:/candidate/candidate-list");
 
     }
 

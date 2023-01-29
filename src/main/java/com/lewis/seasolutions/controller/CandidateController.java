@@ -38,10 +38,10 @@ public class CandidateController {
         return "candidate/candidate-by-id";
     }
 
-    @DeleteMapping("/candidate/{id}/delete")
-    public String delete(@PathVariable Long id)
+    @GetMapping("/candidate/{id}/delete")
+    public String delete(@PathVariable Long id, Model model)
     {
         candidateService.delete(id);
-        return "redirect:/candidate/candidate-list";
+        return "redirect:/";
     }
 }

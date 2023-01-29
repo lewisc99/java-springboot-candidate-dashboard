@@ -39,10 +39,10 @@
    	<td>
      	<a href="candidate/${tempCandidate.id}">Details</a>
      	|
-   		<a href="showFormForUpdate?id=${tempCustomer.id}">Update</a>
+   		<a href="showFormForUpdate?id=${tempCandidate.id}">Update</a>
    		|
-   		<a href="delete?id=${tempCustomer.id}"
-   		onclick="if (!(confirm('Are your sure you want to delete this customer?'))) return false">Delete</a>
+   		<a href="candidate/${tempCandidate.id}/delete"
+   		onclick="if (!(confirm('Are your sure you want to delete this Candidate?'))) return false">Delete</a>
    	</td>
    	</tr>
    	</c:forEach>
