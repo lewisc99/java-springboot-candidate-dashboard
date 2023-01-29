@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
+import org.springframework.data.crossstore.ChangeSetPersister;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -138,6 +140,15 @@ public class CandidateServiceTests {
         Mockito.doNothing().when(candidateRepository).deleteById(id);
         candidateService.delete(id);
         verify(candidateRepository,times(1)).deleteById(id);
+    }
+
+    @Test
+    @DisplayName("delete Candidate throw error")
+    public void DeleteCandidateThrowError()
+    {
+        Long id = 1L;
+        Mockito.doThrow(NullPointerException.class).when(candidateRepository).deleteById(id);
+        assertThrows(NullPointerException.class, () -> {candidateService.delete(id);});
     }
 
 }
