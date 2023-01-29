@@ -75,4 +75,17 @@ public class CandidateControllerTests {
         ModelAndViewAssert.assertViewName(modelAndView, "candidate/error-not-found");
     }
 
+    @Test
+    @DisplayName("delete remove Candidate")
+    public void DeleteRemoveCandidate() throws Exception
+    {
+        Long id = 1L;
+        MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get("/candidate/{id}/delete",id))
+                .andExpect(status().isOk()).andReturn();
+
+        ModelAndView modelAndView = mvcResult.getModelAndView();
+        ModelAndViewAssert.assertViewName(modelAndView, "/");
+
+    }
+
 }
