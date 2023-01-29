@@ -14,15 +14,21 @@ public class CandidateConvert {
     @Autowired
     private ModelMapper modelMapper;
 
-    public List<CandidateDTO> toCandidateDTO(List<Candidate> candidatesEntity) {
+    public List<CandidateDTO> toListCandidateDTO(List<Candidate> candidatesEntity) {
         List<CandidateDTO> candidatesDTOS = new ArrayList<>();
         for(Candidate candidate: candidatesEntity)
         {
-            CandidateDTO userDTO = modelMapper.map(candidate, CandidateDTO.class);
+            CandidateDTO candidateDTO = modelMapper.map(candidate, CandidateDTO.class);
 
-            candidatesDTOS.add(userDTO);
+            candidatesDTOS.add(candidateDTO);
         }
         return candidatesDTOS;
     }
+
+    public CandidateDTO toCandidateDTO(Candidate candidatesEntity) {
+        CandidateDTO candidateDTO = modelMapper.map(candidatesEntity, CandidateDTO.class);
+        return candidateDTO;
+    }
+
 
 }
