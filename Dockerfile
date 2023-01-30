@@ -1,3 +1,5 @@
 FROM openjdk:11
+EXPOSE 8080
 COPY ./ ./
-CMD ["java","-jar","build/libs/demo-0.0.1-SNAPSHOT.jar"]
+RUN ./gradlew test build
+CMD ["java","-jar","build/libs/sea-solutions-0.0.1-SNAPSHOT.jar"]

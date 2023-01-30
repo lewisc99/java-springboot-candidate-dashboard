@@ -1,4 +1,4 @@
-# fly.toml file generated for sea-solutions-crud on 2023-01-30T14:30:20-03:00
+# fly.toml file generated for sea-solutions-crud on 2023-01-30T15:25:56-03:00
 
 app = "sea-solutions-crud"
 kill_signal = "SIGINT"

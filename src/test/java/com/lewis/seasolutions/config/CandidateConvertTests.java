@@ -5,20 +5,16 @@ import com.lewis.seasolutions.domain.dtos.CandidateDTO;
 import com.lewis.seasolutions.domain.entities.Candidate;
 import com.lewis.seasolutions.domain.entities.Role;
 import com.lewis.seasolutions.domain.entities.StateCode;
-import com.lewis.seasolutions.repositories.CandidateRepository;
-import com.lewis.seasolutions.services.contracts.CandidateService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(classes = {SeaSolutionsApplication.class}, properties = {"spring.jpa.defer-datasource-initialization=false",
