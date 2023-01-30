@@ -140,6 +140,16 @@ public class CandidateServiceTests {
     }
 
     @Test
+    @DisplayName("create Candidate")
+    public void updateCandidate()
+    {
+        candidate.setId(1L);
+        when(candidateRepository.save(candidate)).thenReturn(candidate);
+        candidateService.saveOrUpdate(candidate);
+        verify(candidateRepository, times(1)).save(candidate);
+    }
+
+    @Test
     @DisplayName("delete Candidate")
     public void DeleteCandidate()
     {
