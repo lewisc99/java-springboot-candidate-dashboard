@@ -37,14 +37,14 @@ public class CandidateController {
     @GetMapping(value = "/candidate/create")
     public String create(Model theModel)
     {
-        CandidateModel candidateModel = addPropertiesToCandidateModel();
+        CandidateModel candidateModel = new CandidateModel();
+         candidateModel = addPropertiesToCandidateModel(candidateModel);
 
         theModel.addAttribute("candidate", candidateModel);
         return "candidate/candidate-create";
     }
-    private CandidateModel addPropertiesToCandidateModel()
+    private CandidateModel addPropertiesToCandidateModel(CandidateModel candidateModel)
     {
-        CandidateModel candidateModel = new CandidateModel();
         List<Role> roles = roleService.findAll();
         List<StateCode> stateCodes = stateCodeService.findAll();
 
@@ -89,6 +89,16 @@ public class CandidateController {
         CandidateDTO candidateDTO = candidateConvert.toCandidateDTO(candidate);
         model.addAttribute("candidate",candidateDTO);
         return "candidate/candidate-by-id";
+    }
+
+    @GetMapping(value = "/candidate/{id}/update")
+    public String update(@PathVariable Long id, Model theModel)
+    {
+        Candidate candidate = candidateService.findById(id);
+        CandidateModel candidateModel = mapper.map(candidate, CandidateModel.class);
+        candidateModel = addPropertiesToCandidateModel(candidateModel);
+        theModel.addAttribute("candidate", candidateModel);
+        return "candidate/candidate-create";
     }
 
     @GetMapping("/candidate/{id}/delete")

@@ -39,7 +39,7 @@
    	<td>
      	<a href="candidate/${tempCandidate.id}">Details</a>
      	|
-   		<a href="showFormForUpdate?id=${tempCandidate.id}">Update</a>
+   		<a href="candidate/${tempCandidate.id}/update">Update</a>
    		|
    		<a href="candidate/${tempCandidate.id}/delete"
    		onclick="if (!(confirm('Are your sure you want to delete this Candidate?'))) return false">Delete</a>
