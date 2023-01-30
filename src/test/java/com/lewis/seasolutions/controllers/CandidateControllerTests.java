@@ -4,6 +4,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lewis.seasolutions.SeaSolutionsApplication;
 import com.lewis.seasolutions.config.CandidateConvert;
 import com.lewis.seasolutions.config.MockBeansConfiguration;
+import com.lewis.seasolutions.domain.models.CandidateModel;
+import com.lewis.seasolutions.domain.models.RoleModel;
+import com.lewis.seasolutions.domain.models.StateCodeModel;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +44,36 @@ public class CandidateControllerTests {
     @Autowired
     private MockMvc mockMvc;
 
+    @Autowired
+    private CandidateModel candidateModel;
+
+
+    @BeforeEach
+    public void beforeEach()
+    {
+        candidateModel.setId(4L);
+        candidateModel.setUsername("Josue Santos");
+        candidateModel.setDoc("1999393939393");
+        candidateModel.setEmail("josue.santos@gmail.com");
+        candidateModel.setPortfolio("www.josue.santos.com.br");
+        candidateModel.setRoleId(3L);
+        candidateModel.setStateCodeId(3L);
+    }
+
+
+//    @Test
+//    @DisplayName("Create Candidate")
+//    public void CreateCandidate() throws Exception
+//    {
+//
+//        MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post("/candidate/createdCandidate").flashAttr("candidate",candidateModel)
+//                        )
+//                .andExpect(status().isOk()).andReturn();
+//        ModelAndView modelAndView = mvcResult.getModelAndView();
+//        ModelAndViewAssert.assertViewName(modelAndView, "redirect:/");
+//    }
+
+    
     @Test
     @DisplayName("getAll Return CandidateListDTO")
     public void getAllReturnCandidateListDTO() throws Exception

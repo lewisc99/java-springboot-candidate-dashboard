@@ -2,6 +2,7 @@ package com.lewis.seasolutions.domain.entities;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="tb_statecode")
@@ -13,6 +14,7 @@ public class StateCode {
     @Column(name = "id")
     private Long id;
     private String initials;
+
 
     public Long getId() {
         return id;
