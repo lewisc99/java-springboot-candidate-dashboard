@@ -1,6 +1,7 @@
 package com.lewis.seasolutions.domain.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -13,6 +14,8 @@ public class Role {
     @Column(name = "id")
     private Long id;
     private String name;
+
+
 
     public Long getId() {
         return id;

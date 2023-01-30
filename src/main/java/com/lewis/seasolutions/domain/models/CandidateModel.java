@@ -1,13 +1,19 @@
 package com.lewis.seasolutions.domain.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CandidateModel {
     private Long id;
     private String username;
     private String email;
     private String doc;
-    private RoleModel role;
+    private Long roleId;
+    private List<RoleModel> roles = new ArrayList<>();
     private String portfolio;
-    private StateCodeModel stateCode;
+
+    private Long stateCodeId;
+    private List<StateCodeModel> stateCodes = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -41,12 +47,20 @@ public class CandidateModel {
         this.doc = doc;
     }
 
-    public RoleModel getRole() {
-        return role;
+    public Long getRoleId() {
+        return roleId;
     }
 
-    public void setRole(RoleModel role) {
-        this.role = role;
+    public void setRoleId(Long roleId) {
+        this.roleId = roleId;
+    }
+
+    public List<RoleModel> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<RoleModel> roles) {
+        this.roles = roles;
     }
 
     public String getPortfolio() {
@@ -57,11 +71,19 @@ public class CandidateModel {
         this.portfolio = portfolio;
     }
 
-    public StateCodeModel getStateCode() {
-        return stateCode;
+    public Long getStateCodeId() {
+        return stateCodeId;
     }
 
-    public void setStateCode(StateCodeModel stateCode) {
-        this.stateCode = stateCode;
+    public void setStateCodeId(Long stateCodeId) {
+        this.stateCodeId = stateCodeId;
+    }
+
+    public List<StateCodeModel> getStateCodes() {
+        return stateCodes;
+    }
+
+    public void setStateCodes(List<StateCodeModel> stateCodes) {
+        this.stateCodes = stateCodes;
     }
 }

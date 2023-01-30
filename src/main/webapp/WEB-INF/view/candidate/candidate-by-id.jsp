@@ -12,13 +12,14 @@ li.list-group-item
 }
 </style>
 <body>
-<header class="justify-content-center text-center d-flex">
-	<div id="header">
-	<h2>Candidates SEA Solutions</h2></div>
-</header>
 <div class="container flex">
     <div class="row flex-row d-flex">
      <div class="col">
+      <header class="align-center mb-5">
+             <div id="header">
+              <img src="http://www.seasolutions.io/image/layout_set_logo?img_id=90106&t=1643032726158"/>
+              	<h3 class="justify-content-center text-center d-flex">Candidate SEA Solutions <em style="color:#007bff;" class="ml-2">${candidate.username}</em></h3></div>
+           </header>
       <ul class="list-group  list-group-horizontal justify-content-center d-flex ">
                 <li class="list-group-item">Username</li>
                 <li class="list-group-item">${candidate.username}</li>

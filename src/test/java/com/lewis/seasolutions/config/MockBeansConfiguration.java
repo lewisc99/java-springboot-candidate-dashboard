@@ -3,6 +3,9 @@ package com.lewis.seasolutions.config;
 import com.lewis.seasolutions.domain.entities.Candidate;
 import com.lewis.seasolutions.domain.entities.Role;
 import com.lewis.seasolutions.domain.entities.StateCode;
+import com.lewis.seasolutions.domain.models.CandidateModel;
+import com.lewis.seasolutions.domain.models.RoleModel;
+import com.lewis.seasolutions.domain.models.StateCodeModel;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -32,6 +35,29 @@ public class MockBeansConfiguration {
     {
         return new StateCode();
     }
+
+    @Bean
+    @Scope(value = "prototype")
+    public CandidateModel getCandidateModel()
+    {
+        return new CandidateModel();
+    }
+
+    @Bean
+    @Scope(value="prototype")
+    public RoleModel getRoleModel()
+    {
+        return new RoleModel();
+    }
+
+    @Bean
+    @Scope(value="prototype")
+    public StateCodeModel getStateCodeModel()
+    {
+        return new StateCodeModel();
+    }
+
+
 
 
 }

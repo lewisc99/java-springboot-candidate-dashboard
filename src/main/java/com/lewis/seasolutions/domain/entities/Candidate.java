@@ -13,11 +13,11 @@ public class Candidate {
     private String username;
     private String email;
     private String doc;
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE, CascadeType.PERSIST,CascadeType.REFRESH})
     private Role role;
     private String portfolio;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE, CascadeType.PERSIST,CascadeType.REFRESH})
     private StateCode stateCode;
 
     public Candidate() {

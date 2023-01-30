@@ -15,8 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
-import org.springframework.data.crossstore.ChangeSetPersister;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -90,6 +88,15 @@ public class CandidateServiceTests {
     }
 
     @Test
+    @DisplayName("create Candidate")
+    public void createCandidate()
+    {
+        when(candidateRepository.save(candidate)).thenReturn(candidate);
+        candidateService.saveOrUpdate(candidate);
+        verify(candidateRepository, times(1)).save(candidate);
+    }
+
+    @Test
     @DisplayName("getAll return List Candidates")
     public void getAllCandidates()
     {
@@ -130,6 +137,16 @@ public class CandidateServiceTests {
         Long id = 1L;
         when(candidateRepository.findById(id)).thenThrow(NullPointerException.class);
         assertThrows(NullPointerException.class, () -> {candidateService.findById(1L);});
+    }
+
+    @Test
+    @DisplayName("create Candidate")
+    public void updateCandidate()
+    {
+        candidate.setId(1L);
+        when(candidateRepository.save(candidate)).thenReturn(candidate);
+        candidateService.saveOrUpdate(candidate);
+        verify(candidateRepository, times(1)).save(candidate);
     }
 
     @Test
