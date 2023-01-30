@@ -85,7 +85,6 @@ public class CandidateControllerTests {
 
         ModelAndView modelAndView = mvcResult.getModelAndView();
         ModelAndViewAssert.assertViewName(modelAndView, "redirect:/");
-
     }
 
 }
