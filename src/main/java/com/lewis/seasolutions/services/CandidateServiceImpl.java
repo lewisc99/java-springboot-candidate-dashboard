@@ -39,6 +39,11 @@ public class CandidateServiceImpl implements CandidateService {
     }
 
     @Override
+    public void update(Candidate candidate) {
+        repository.save(candidate);
+    }
+
+    @Override
     @Transactional
     public void delete(Long id) {
          repository.deleteById(id);

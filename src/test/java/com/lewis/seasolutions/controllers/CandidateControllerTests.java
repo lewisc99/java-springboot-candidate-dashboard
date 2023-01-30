@@ -73,7 +73,7 @@ public class CandidateControllerTests {
 //        ModelAndViewAssert.assertViewName(modelAndView, "redirect:/");
 //    }
 
-    
+
     @Test
     @DisplayName("getAll Return CandidateListDTO")
     public void getAllReturnCandidateListDTO() throws Exception
@@ -120,6 +120,7 @@ public class CandidateControllerTests {
         ModelAndView modelAndView = mvcResult.getModelAndView();
         ModelAndViewAssert.assertViewName(modelAndView, "redirect:/");
     }
+
 
     @Test
     @DisplayName("delete  Candidate Return Not Found Page")

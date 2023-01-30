@@ -9,5 +9,7 @@ public interface CandidateService {
     void create(Candidate candidate);
     List<Candidate> findAll();
     Candidate findById(Long id);
+
+    void update(Candidate candidate);
     void delete(Long id);
 }
