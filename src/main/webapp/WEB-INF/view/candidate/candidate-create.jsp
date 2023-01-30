@@ -51,7 +51,7 @@
               </div>
 
         <div class="form-group flex-row">
-                <input type="submit" value="Create" class="btn btn-success"/> |
+                <input type="submit" value="Create" class="btn btn-primary"/> |
                  <a href="${pageContext.request.contextPath}/" class="ml-2">Back to list</a>
         </div>
         </form:form>

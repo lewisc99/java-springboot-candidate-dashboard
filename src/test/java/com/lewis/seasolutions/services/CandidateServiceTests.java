@@ -92,7 +92,7 @@ public class CandidateServiceTests {
     public void createCandidate()
     {
         when(candidateRepository.save(candidate)).thenReturn(candidate);
-        candidateService.create(candidate);
+        candidateService.saveOrUpdate(candidate);
         verify(candidateRepository, times(1)).save(candidate);
     }
 
