@@ -1,6 +1,6 @@
 package com.lewis.seasolutions.config.exception;
 
-
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -14,4 +14,9 @@ public class MvcExceptionHandler {
         return "candidate/error-not-found";
     }
 
+    @ExceptionHandler(value = {EmptyResultDataAccessException.class})
+    public String EmptyResultDataAccessException()
+    {
+        return "candidate/error-not-found";
+    }
 }

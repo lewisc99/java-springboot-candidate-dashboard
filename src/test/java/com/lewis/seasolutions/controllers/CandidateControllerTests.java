@@ -87,4 +87,15 @@ public class CandidateControllerTests {
         ModelAndViewAssert.assertViewName(modelAndView, "redirect:/");
     }
 
+    @Test
+    @DisplayName("delete  Candidate Return Not Found Page")
+    public void DeleteCandidateReturnNotFoundPage() throws Exception
+    {
+        Long id = 20L;
+        MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get("/candidate/{id}/delete",id))
+                .andExpect(status().isOk()).andReturn();
+
+        ModelAndView modelAndView = mvcResult.getModelAndView();
+        ModelAndViewAssert.assertViewName(modelAndView, "candidate/error-not-found");
+    }
 }
