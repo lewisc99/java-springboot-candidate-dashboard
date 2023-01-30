@@ -37,6 +37,13 @@ public class CandidateController {
     @GetMapping(value = "/candidate/create")
     public String create(Model theModel)
     {
+        CandidateModel candidateModel = addPropertiesToCandidateModel();
+
+        theModel.addAttribute("candidate", candidateModel);
+        return "candidate/candidate-create";
+    }
+    private CandidateModel addPropertiesToCandidateModel()
+    {
         CandidateModel candidateModel = new CandidateModel();
         List<Role> roles = roleService.findAll();
         List<StateCode> stateCodes = stateCodeService.findAll();
@@ -45,9 +52,7 @@ public class CandidateController {
         List<StateCodeModel> stateCodeModelList = candidateConvert.toListStateCodeModel(stateCodes);
         candidateModel.setRoles(roleModelList);
         candidateModel.setStateCodes(stateCodeModelList);
-
-        theModel.addAttribute("candidate", candidateModel);
-        return "candidate/candidate-create";
+        return candidateModel;
     }
 
     @PostMapping("candidate/createdCandidate")
@@ -58,7 +63,6 @@ public class CandidateController {
         Candidate candidate = mapper.map(candidateModel, Candidate.class);
         candidate.setRole(role);
         candidate.setStateCode(stateCode);
-        candidate.setId(10L);
         candidateService.create(candidate);
         return "redirect:/";
     }
