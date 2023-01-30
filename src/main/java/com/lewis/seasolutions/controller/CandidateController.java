@@ -21,13 +21,12 @@ public class CandidateController {
     @Autowired
     private CandidateConvert candidateConvert;
 
-
     @GetMapping(value = "/candidate/create")
     public String create(Model theModel)
     {
         CandidateModel candidateModel = new CandidateModel();
         theModel.addAttribute("candidate", candidateModel);
-        return "candidate-create";
+        return "candidate/candidate-create";
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)

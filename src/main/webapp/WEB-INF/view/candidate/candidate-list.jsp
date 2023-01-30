@@ -14,7 +14,7 @@
 <div class="row">
 <div class="col-md-5">
    	<input type="button" value="Add Candidates"
-   		onclick="window.location.href='showFormForAdd';return false;"
+   		onclick="window.location.href='candidate/create';return false;"
    		class="btn btn-primary"/>
    		<br>
    		<br>
