@@ -4,6 +4,8 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import java.util.NoSuchElementException;
+
 @ControllerAdvice
 public class MvcExceptionHandler {
 
@@ -16,6 +18,18 @@ public class MvcExceptionHandler {
 
     @ExceptionHandler(value = {EmptyResultDataAccessException.class})
     public String EmptyResultDataAccessException()
+    {
+        return "candidate/error-not-found";
+    }
+
+    @ExceptionHandler(value = {NoSuchElementException.class})
+    public String NotFound()
+    {
+        return "candidate/error-not-found";
+    }
+
+    @ExceptionHandler(value = {IllegalArgumentException.class})
+    public String illegalArgumentException()
     {
         return "candidate/error-not-found";
     }

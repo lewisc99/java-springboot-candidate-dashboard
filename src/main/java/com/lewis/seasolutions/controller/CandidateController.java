@@ -37,7 +37,7 @@ public class CandidateController {
     @GetMapping(value = "/candidate/create")
     public String create(Model theModel)
     {
-        CandidateModel candidateModel = new CandidateModel();
+         CandidateModel candidateModel = new CandidateModel();
          candidateModel = addPropertiesToCandidateModel(candidateModel);
 
         theModel.addAttribute("candidate", candidateModel);
