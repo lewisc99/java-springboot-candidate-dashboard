@@ -6,4 +6,6 @@ import java.util.List;
 public interface StateCodeService {
 
     List<StateCode> findAll();
+    StateCode findById(Long id);
+
 }

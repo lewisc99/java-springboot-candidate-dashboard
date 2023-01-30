@@ -52,6 +52,7 @@ public class CandidateController {
     public String save(@ModelAttribute("candidate") CandidateModel candidateModel)
     {
         System.out.println(candidateModel);
+
         return "redirect:/";
     }
 
