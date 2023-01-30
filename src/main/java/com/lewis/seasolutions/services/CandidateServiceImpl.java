@@ -17,7 +17,7 @@ public class CandidateServiceImpl implements CandidateService {
 
     @Override
     @Transactional
-    public void create(Candidate candidate) {
+    public void saveOrUpdate(Candidate candidate) {
         repository.save(candidate);
     }
 
@@ -36,11 +36,6 @@ public class CandidateServiceImpl implements CandidateService {
            throw new NullPointerException("Id not found: " + id);
        }
        return candidate.get();
-    }
-
-    @Override
-    public void update(Candidate candidate) {
-        repository.save(candidate);
     }
 
     @Override

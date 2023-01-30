@@ -59,7 +59,7 @@ public class CandidateController {
     public String save(@ModelAttribute("candidate") CandidateModel candidateModel)
     {
         Candidate candidate = convertCandidateModelToEntity(candidateModel);
-        candidateService.create(candidate);
+        candidateService.saveOrUpdate(candidate);
         return "redirect:/";
     }
 
@@ -98,7 +98,15 @@ public class CandidateController {
         CandidateModel candidateModel = mapper.map(candidate, CandidateModel.class);
         candidateModel = addPropertiesToCandidateModel(candidateModel);
         theModel.addAttribute("candidate", candidateModel);
-        return "candidate/candidate-create";
+        return "candidate/candidate-update";
+    }
+
+    @PostMapping("candidate/updatedCandidate")
+    public String update(@ModelAttribute("candidate") CandidateModel candidateModel)
+    {
+        Candidate candidate = convertCandidateModelToEntity(candidateModel);
+        candidateService.saveOrUpdate(candidate);
+        return "redirect:/";
     }
 
     @GetMapping("/candidate/{id}/delete")

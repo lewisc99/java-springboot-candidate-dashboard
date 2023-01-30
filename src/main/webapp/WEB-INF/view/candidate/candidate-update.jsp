@@ -13,7 +13,8 @@
           <header>
           </header>
           <h3>Update Candidate</h3>
-          <form:form action="updatedCandidate" modelAttribute="candidate" method="POST">
+          <form:form action="../updatedCandidate" modelAttribute="candidate" method="POST">
+            <form:input type="hidden" path="id" />
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
            <div class="form-group">
                 <label for="username">Username: </label>
