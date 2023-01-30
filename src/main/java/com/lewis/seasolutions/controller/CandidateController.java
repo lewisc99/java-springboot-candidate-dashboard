@@ -58,13 +58,19 @@ public class CandidateController {
     @PostMapping("candidate/createdCandidate")
     public String save(@ModelAttribute("candidate") CandidateModel candidateModel)
     {
+        Candidate candidate = convertCandidateModelToEntity(candidateModel);
+        candidateService.create(candidate);
+        return "redirect:/";
+    }
+
+    private Candidate convertCandidateModelToEntity(CandidateModel candidateModel)
+    {
         Role role = roleService.findById(candidateModel.getRoleId());
         StateCode stateCode = stateCodeService.findById(candidateModel.getStateCodeId());
         Candidate candidate = mapper.map(candidateModel, Candidate.class);
         candidate.setRole(role);
         candidate.setStateCode(stateCode);
-        candidateService.create(candidate);
-        return "redirect:/";
+        return candidate;
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
