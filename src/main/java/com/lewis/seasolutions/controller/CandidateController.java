@@ -48,6 +48,13 @@ public class CandidateController {
         return "candidate/candidate-create";
     }
 
+    @PostMapping("candidate/createdCandidate")
+    public String save(@ModelAttribute("candidate") CandidateModel candidateModel)
+    {
+        System.out.println(candidateModel);
+        return "redirect:/";
+    }
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String getAll(Model model) {
 

@@ -13,8 +13,8 @@
           <header>
           </header>
           <h3>Create Candidate</h3>
-          <form:form action="saveCustomer" modelAttribute="candidate" method="POST">
-            <form:hidden path="id" />
+          <form:form action="createdCandidate" modelAttribute="candidate" method="POST">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
            <div class="form-group">
                 <label for="username">Username: </label>
                 <form:input type="text" id="username" path="username"   placeholder="enter an Username" class="form-control"/>
@@ -28,10 +28,10 @@
                 <form:input type="text" id="doc" path="doc"   placeholder="enter an Doc" class="form-control"/>
             </div>
              <div class="form-group">
-                <label for="category">Roles: </label>
-               <select  class="form-control">
+                <label for="roles">Roles: </label>
+               <select  class="form-control"  name="roleId">
                         <c:forEach var="tempRole" items="${candidate.roles}">
-                          <option value="${tempRole.id}">${tempRole.name}</option>
+                          <option id="roles" value="${tempRole.id}">${tempRole.name}</option>
                         </c:forEach>
                       </select>
               </div>
@@ -43,17 +43,18 @@
 
             <div class="form-group">
                 <label for="statecode">State Code: </label>
-               <select  class="form-control">
+               <select  class="form-control" name="stateCodeId">
                         <c:forEach var="tempStateCode" items="${candidate.stateCodes}">
-                          <option value="${tempStateCode.id}">${tempStateCode.initials}</option>
+                          <option id="statecode" value="${tempStateCode.id}">${tempStateCode.initials}</option>
                         </c:forEach>
                       </select>
               </div>
 
+        <div class="form-group flex-row">
+                <input type="submit" value="Create" class="btn btn-success"/> |
+                 <a href="${pageContext.request.contextPath}/" class="ml-2">Back to list</a>
+        </div>
         </form:form>
-        <div class="md-3">
-        <p> <a href="${pageContext.request.contextPath}/">Back to list</a>
-
         </form>
         </div>
     </div>

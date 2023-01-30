@@ -8,8 +8,11 @@ public class CandidateModel {
     private String username;
     private String email;
     private String doc;
+    private Long roleId;
     private List<RoleModel> roles = new ArrayList<>();
     private String portfolio;
+
+    private Long stateCodeId;
     private List<StateCodeModel> stateCodes = new ArrayList<>();
 
     public Long getId() {
@@ -44,6 +47,13 @@ public class CandidateModel {
         this.doc = doc;
     }
 
+    public Long getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Long roleId) {
+        this.roleId = roleId;
+    }
 
     public List<RoleModel> getRoles() {
         return roles;
@@ -59,6 +69,14 @@ public class CandidateModel {
 
     public void setPortfolio(String portfolio) {
         this.portfolio = portfolio;
+    }
+
+    public Long getStateCodeId() {
+        return stateCodeId;
+    }
+
+    public void setStateCodeId(Long stateCodeId) {
+        this.stateCodeId = stateCodeId;
     }
 
     public List<StateCodeModel> getStateCodes() {
