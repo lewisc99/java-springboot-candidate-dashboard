@@ -1,11 +1,14 @@
 package com.lewis.seasolutions.domain.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CandidateModel {
     private Long id;
     private String username;
     private String email;
     private String doc;
-    private RoleModel role;
+    private List<RoleModel> roles = new ArrayList<>();
     private String portfolio;
     private StateCodeModel stateCode;
 
@@ -41,12 +44,13 @@ public class CandidateModel {
         this.doc = doc;
     }
 
-    public RoleModel getRole() {
-        return role;
+
+    public List<RoleModel> getRoles() {
+        return roles;
     }
 
-    public void setRole(RoleModel role) {
-        this.role = role;
+    public void setRoles(List<RoleModel> roles) {
+        this.roles = roles;
     }
 
     public String getPortfolio() {

@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,24 +27,23 @@
                 <label for="doc">Doc: </label>
                 <form:input type="text" id="doc" path="doc"   placeholder="enter an Doc" class="form-control"/>
             </div>
+             <div class="form-group">
+                <label for="category">Roles: </label>
+               <select  class="form-control">
+                        <c:forEach var="tempRole" items="${roles}">
+                          <option value="${tempRole.id}">${tempRole.name}</option>
+                        </c:forEach>
+                      </select>
+              </div>
+
             <div class="form-group">
                 <label for="portfolio">Portfolio Link: </label>
                 <form:input type="text" id="portfolio" path="portfolio"   placeholder="enter a Portfolio Link" class="form-control"/>
             </div>
-            <div class="form-group">
-                <label for="Role">Role: </label>
-                <select class="form-control" id="role">
-                 <c:forEach var="tempRole" items="${candidate.role}">
-                  <option  path="role">
-                     ${tempRole.name}
-                </option>
-                </c:forEach>
-                </select>
-              </div>
 
         </form:form>
         <div class="md-3">
-        <p> <a href="${pageContext.request.contextPath}/customer/list">Back to list</a>
+        <p> <a href="${pageContext.request.contextPath}/">Back to list</a>
 
         </form>
         </div>

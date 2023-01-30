@@ -1,7 +1,9 @@
 package com.lewis.seasolutions.config;
 
 import com.lewis.seasolutions.domain.dtos.CandidateDTO;
+import com.lewis.seasolutions.domain.models.RoleModel;
 import com.lewis.seasolutions.domain.entities.Candidate;
+import com.lewis.seasolutions.domain.entities.Role;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -23,6 +25,17 @@ public class CandidateConvert {
             candidatesDTOS.add(candidateDTO);
         }
         return candidatesDTOS;
+    }
+
+    public List<RoleModel> toListRoleModel(List<Role> rolesEntity) {
+        List<RoleModel> RoleModels = new ArrayList<>();
+        for(Role role: rolesEntity)
+        {
+            RoleModel RoleModel = modelMapper.map(role, RoleModel.class);
+
+            RoleModels.add(RoleModel);
+        }
+        return RoleModels;
     }
 
     public CandidateDTO toCandidateDTO(Candidate candidatesEntity) {
