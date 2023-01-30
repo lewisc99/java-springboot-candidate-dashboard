@@ -20,6 +20,8 @@ dependencies {
 	implementation group: 'org.hibernate', name: 'hibernate-validator', version: '6.2.4.Final'
     implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '9.0.71'
     implementation group: 'jstl', name: 'jstl', version: '1.2'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation group: 'org.modelmapper', name: 'modelmapper', version: '3.0.0'
 }
 
 tasks.named('test') {
