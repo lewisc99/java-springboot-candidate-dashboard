@@ -30,7 +30,7 @@
              <div class="form-group">
                 <label for="category">Roles: </label>
                <select  class="form-control">
-                        <c:forEach var="tempRole" items="${roles}">
+                        <c:forEach var="tempRole" items="${candidate.roles}">
                           <option value="${tempRole.id}">${tempRole.name}</option>
                         </c:forEach>
                       </select>
@@ -40,6 +40,15 @@
                 <label for="portfolio">Portfolio Link: </label>
                 <form:input type="text" id="portfolio" path="portfolio"   placeholder="enter a Portfolio Link" class="form-control"/>
             </div>
+
+            <div class="form-group">
+                <label for="statecode">State Code: </label>
+               <select  class="form-control">
+                        <c:forEach var="tempStateCode" items="${candidate.stateCodes}">
+                          <option value="${tempStateCode.id}">${tempStateCode.initials}</option>
+                        </c:forEach>
+                      </select>
+              </div>
 
         </form:form>
         <div class="md-3">

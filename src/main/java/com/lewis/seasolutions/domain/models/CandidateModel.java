@@ -10,7 +10,7 @@ public class CandidateModel {
     private String doc;
     private List<RoleModel> roles = new ArrayList<>();
     private String portfolio;
-    private StateCodeModel stateCode;
+    private List<StateCodeModel> stateCodes = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -61,11 +61,11 @@ public class CandidateModel {
         this.portfolio = portfolio;
     }
 
-    public StateCodeModel getStateCode() {
-        return stateCode;
+    public List<StateCodeModel> getStateCodes() {
+        return stateCodes;
     }
 
-    public void setStateCode(StateCodeModel stateCode) {
-        this.stateCode = stateCode;
+    public void setStateCodes(List<StateCodeModel> stateCodes) {
+        this.stateCodes = stateCodes;
     }
 }

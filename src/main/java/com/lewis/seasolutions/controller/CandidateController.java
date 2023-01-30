@@ -4,10 +4,13 @@ import com.lewis.seasolutions.config.CandidateConvert;
 import com.lewis.seasolutions.domain.dtos.CandidateDTO;
 import com.lewis.seasolutions.domain.entities.Candidate;
 import com.lewis.seasolutions.domain.entities.Role;
+import com.lewis.seasolutions.domain.entities.StateCode;
 import com.lewis.seasolutions.domain.models.CandidateModel;
 import com.lewis.seasolutions.domain.models.RoleModel;
+import com.lewis.seasolutions.domain.models.StateCodeModel;
 import com.lewis.seasolutions.services.contracts.CandidateService;
 import com.lewis.seasolutions.services.contracts.RoleService;
+import com.lewis.seasolutions.services.contracts.StateCodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,9 +23,11 @@ public class CandidateController {
 
     @Autowired
     private CandidateService candidateService;
-
     @Autowired
     private RoleService roleService;
+
+    @Autowired
+    private StateCodeService stateCodeService;
 
     @Autowired
     private CandidateConvert candidateConvert;
@@ -32,11 +37,14 @@ public class CandidateController {
     {
         CandidateModel candidateModel = new CandidateModel();
         List<Role> roles = roleService.findAll();
+        List<StateCode> stateCodes = stateCodeService.findAll();
+
         List<RoleModel> roleModelList = candidateConvert.toListRoleModel(roles);
+        List<StateCodeModel> stateCodeModelList = candidateConvert.toListStateCodeModel(stateCodes);
         candidateModel.setRoles(roleModelList);
+        candidateModel.setStateCodes(stateCodeModelList);
 
         theModel.addAttribute("candidate", candidateModel);
-        theModel.addAttribute("roles", roleModelList);
         return "candidate/candidate-create";
     }
 
