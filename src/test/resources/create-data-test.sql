@@ -16,6 +16,6 @@ INSERT INTO TB_STATECODE (ID,initials) VALUES (11L,'MT');
 INSERT INTO TB_STATECODE (ID,initials) VALUES (12L,'MS');
 INSERT INTO TB_STATECODE (ID,initials) VALUES (13L,'MG');
 
-INSERT INTO TB_CANDIDATE (ID,USERNAME,DOC,EMAIL,PORTFOLIO, ROLE_ID,STATE_CODE_ID) VALUES (1L,'Michele','9833839938393','michele@gmail.com','https://portfolioexample.com.br',1L,1L);
-INSERT INTO TB_CANDIDATE (ID,USERNAME,DOC,EMAIL,PORTFOLIO, ROLE_ID,STATE_CODE_ID) VALUES (2L,'Luiz Carlos','88383838383','lewiscarlos@gmail.com','https://portfolioexample.com.br',2L,13L);
-INSERT INTO TB_CANDIDATE (ID,USERNAME,DOC,EMAIL,PORTFOLIO, ROLE_ID,STATE_CODE_ID) VALUES (3L,'Nelson Gustavo','29393339393','nelson.golcalvez@gmail.com','https://portfolioexample.com.br',3L,7L);
+INSERT INTO TB_CANDIDATE (USERNAME,DOC,EMAIL,PORTFOLIO, ROLE_ID,STATE_CODE_ID) VALUES ('Michele','9833839938393','michele@gmail.com','https://portfolioexample.com.br',1L,1L);
+INSERT INTO TB_CANDIDATE (USERNAME,DOC,EMAIL,PORTFOLIO, ROLE_ID,STATE_CODE_ID) VALUES ('Luiz Carlos','88383838383','lewiscarlos@gmail.com','https://portfolioexample.com.br',2L,13L);
+INSERT INTO TB_CANDIDATE (USERNAME,DOC,EMAIL,PORTFOLIO, ROLE_ID,STATE_CODE_ID) VALUES ('Nelson Gustavo','29393339393','nelson.golcalvez@gmail.com','https://portfolioexample.com.br',3L,7L);

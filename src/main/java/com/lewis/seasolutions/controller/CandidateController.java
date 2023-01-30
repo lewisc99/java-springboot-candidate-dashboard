@@ -11,6 +11,7 @@ import com.lewis.seasolutions.domain.models.StateCodeModel;
 import com.lewis.seasolutions.services.contracts.CandidateService;
 import com.lewis.seasolutions.services.contracts.RoleService;
 import com.lewis.seasolutions.services.contracts.StateCodeService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,12 +26,13 @@ public class CandidateController {
     private CandidateService candidateService;
     @Autowired
     private RoleService roleService;
-
     @Autowired
     private StateCodeService stateCodeService;
-
     @Autowired
     private CandidateConvert candidateConvert;
+
+    @Autowired
+    private ModelMapper mapper;
 
     @GetMapping(value = "/candidate/create")
     public String create(Model theModel)
@@ -51,8 +53,13 @@ public class CandidateController {
     @PostMapping("candidate/createdCandidate")
     public String save(@ModelAttribute("candidate") CandidateModel candidateModel)
     {
-        System.out.println(candidateModel);
-
+        Role role = roleService.findById(candidateModel.getRoleId());
+        StateCode stateCode = stateCodeService.findById(candidateModel.getStateCodeId());
+        Candidate candidate = mapper.map(candidateModel, Candidate.class);
+        candidate.setRole(role);
+        candidate.setStateCode(stateCode);
+        candidate.setId(10L);
+        candidateService.create(candidate);
         return "redirect:/";
     }
 
