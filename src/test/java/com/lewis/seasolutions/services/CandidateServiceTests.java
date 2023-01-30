@@ -90,6 +90,15 @@ public class CandidateServiceTests {
     }
 
     @Test
+    @DisplayName("create Candidate")
+    public void createCandidate()
+    {
+        when(candidateRepository.save(candidate)).thenReturn(candidate);
+        candidateService.create(candidate);
+        verify(candidateRepository, times(1)).save(candidate);
+    }
+
+    @Test
     @DisplayName("getAll return List Candidates")
     public void getAllCandidates()
     {
