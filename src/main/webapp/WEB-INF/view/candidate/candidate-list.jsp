@@ -19,7 +19,7 @@
   <div class="col  col-xxl">
       <header class="align-center mb-5">
         <div id="header">
-         <img src="http://www.seasolutions.io/image/layout_set_logo?img_id=90106&t=1643032726158"/>
+            <img src='<c:url value="/files/layout_set_logo.png"></c:url>' />
       </header>
    	<input type="button" value="Add Candidates"
    		onclick="window.location.href='candidate/create';return false;"

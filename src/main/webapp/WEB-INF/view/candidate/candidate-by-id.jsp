@@ -17,7 +17,7 @@ li.list-group-item
      <div class="col">
       <header class="align-center mb-5">
              <div id="header">
-              <img src="http://www.seasolutions.io/image/layout_set_logo?img_id=90106&t=1643032726158"/>
+                <img src='<c:url value="/files/layout_set_logo.png"></c:url>' />
               	<h3 class="justify-content-center text-center d-flex">Candidate SEA Solutions <em style="color:#007bff;" class="ml-2">${candidate.username}</em></h3></div>
            </header>
       <ul class="list-group  list-group-horizontal justify-content-center d-flex ">
