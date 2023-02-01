@@ -135,6 +135,34 @@ public class CandidateControllerTests {
         ModelAndViewAssert.assertViewName(modelAndView, "candidate/error-not-found");
     }
 
+
+    @Test
+    @DisplayName("Update Candidate")
+    public void UpdateCandidate() throws Exception
+    {
+        candidateModel.setId(1L);
+
+        MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post("/updatedCandidate").flashAttr("candidate",candidateModel)
+                )
+                .andExpect(status().is3xxRedirection()).andReturn();
+        ModelAndView modelAndView = mvcResult.getModelAndView();
+        ModelAndViewAssert.assertViewName(modelAndView, "redirect:/");
+    }
+
+    @Test
+    @DisplayName("Update Candidate Invalid Param")
+    public void UpdateCandidateInvalidParam() throws Exception
+    {
+        candidateModel.setId(1L);
+
+        MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post("/updatedCandidate").flashAttr("candidate",candidateModel).param("id","15")
+                )
+                .andExpect(status().is4xxClientError()).andReturn();
+        ModelAndView modelAndView = mvcResult.getModelAndView();
+        ModelAndViewAssert.assertViewName(modelAndView, "candidate/error-not-found");
+    }
+
+
     @Test
     @DisplayName("delete remove Candidate")
     public void DeleteRemoveCandidate() throws Exception
