@@ -49,7 +49,7 @@ li.list-group-item
          <div class="row">
                 <div class="col mt-3">
                     <div class="justify-content-center align-items-center d-flex">
-                        <button class="btn btn-primary mr-3" [routerLink]="['..',employee.id, 'edit']">Update</button>
+                        <a class="btn btn-primary mr-3" href="${pageContext.request.contextPath}/candidate/${candidate.id}/update" class="btn btn-primary">Update</a>
                         <a href="/..">Back to list</a>
                       </div>
                 </div>
