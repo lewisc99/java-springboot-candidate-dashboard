@@ -6,22 +6,18 @@ import java.util.List;
 
 public class CandidateModel {
     private Long id;
-
     @NotBlank(message = "cannot be empty")
     @Size(min=1,max=12,message="Size must be between 1 and 10 characters")
     @Pattern(regexp = "[a-zA-Z][a-zA-Z ]+", message = "only letters")
     private String username;
-
     @Size(min=10,max=40,message="size must be between 10 and 40 characters")
     @Pattern(regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$", message = "Email is invalid")
     @NotBlank(message = "cannot be empty")
     private String email;
-
     @Size(min = 10, max = 20, message = "Doc size must be at least 10 characters and max 20.")
     @Pattern(regexp = "^[0-9]*$", message = "Cannot contain letters")
     @NotBlank(message = "cannot be empty")
     private String doc;
-
     private Long roleId;
     private List<RoleModel> roles = new ArrayList<>();
 
@@ -31,7 +27,6 @@ public class CandidateModel {
     private String portfolio;
 
     private Long stateCodeId;
-
     private List<StateCodeModel> stateCodes = new ArrayList<>();
 
     public Long getId() {
@@ -53,7 +48,6 @@ public class CandidateModel {
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }

@@ -5,8 +5,11 @@
 <title>List Candidates</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <style>
-thead.table-primary {
-       background-color: blue;
+.table-primary {
+       background-color: #0d6efd;
+       --bs-table-bg: #0d6efd;
+       --bs-table-striped-bg: #0d6efd;
+       color:white;
 }
 </style>
 </head>
