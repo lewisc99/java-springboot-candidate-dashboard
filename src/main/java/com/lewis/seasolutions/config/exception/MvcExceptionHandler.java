@@ -1,9 +1,10 @@
 package com.lewis.seasolutions.config.exception;
 
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-
+import org.springframework.web.bind.annotation.ResponseStatus;
 import java.util.NoSuchElementException;
 
 @ControllerAdvice
@@ -33,4 +34,12 @@ public class MvcExceptionHandler {
     {
         return "candidate/error-not-found";
     }
+
+
+    @ExceptionHandler(RuntimeException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public String handleResourceNotFoundException() {
+        return "candidate/error-not-found";
+    }
+
 }
