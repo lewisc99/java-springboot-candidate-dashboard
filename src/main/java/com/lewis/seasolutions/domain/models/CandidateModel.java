@@ -24,12 +24,13 @@ public class CandidateModel {
     @Pattern(regexp = "^[0-9]*$", message = "Cannot contain letters")
     @NotBlank(message = "cannot be empty")
     private String doc;
-    private Long roleId;
 
+    private Long roleId;
     private List<RoleModel> roles = new ArrayList<>();
 
     @NotNull(message="Is required")
-    @Pattern(regexp = "^(ftp|http|https):\\/\\/[^ \"]+$", message = "Portfolio format is invalid")
+    @Pattern(regexp = "^[a-zA-Z0-9_.-]*$", message = "Portfolio format is invalid ")
+    @Size(min = 10, max = 50, message = "Portfolio size must be at least 10 characters and max 50.")
     @NotBlank(message = "cannot be empty")
     private String portfolio;
 

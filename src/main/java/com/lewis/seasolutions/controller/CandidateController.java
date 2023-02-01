@@ -70,11 +70,10 @@ public class CandidateController {
             modelAndView.addObject("candidate",candidateModel);
             return "candidate/candidate-create";
         }
-        else {
             Candidate candidate = convertCandidateModelToEntity(candidateModel);
             candidateService.saveOrUpdate(candidate);
             return "redirect:/";
-        }
+
     }
 
     private Candidate convertCandidateModelToEntity(CandidateModel candidateModel)

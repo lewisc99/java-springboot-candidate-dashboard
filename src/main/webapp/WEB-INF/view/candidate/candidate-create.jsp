@@ -47,7 +47,7 @@
             <div class="form-group">
                 <label for="portfolio">Portfolio Link: </label>
                 <form:input type="text" id="portfolio" path="portfolio"   placeholder="enter a Portfolio Link" class="form-control"/>
-                 <form:errors path="doc" cssClass="error" />
+                 <form:errors path="portfolio" cssClass="error" />
             </div>
 
             <div class="form-group">
