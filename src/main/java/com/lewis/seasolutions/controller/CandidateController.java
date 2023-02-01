@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -56,7 +57,7 @@ public class CandidateController {
     }
 
     @PostMapping("candidate/createdCandidate")
-    public String save(@ModelAttribute("candidate") CandidateModel candidateModel)
+    public String save(@ModelAttribute("candidate") @Valid CandidateModel candidateModel)
     {
         Candidate candidate = convertCandidateModelToEntity(candidateModel);
         candidateService.saveOrUpdate(candidate);

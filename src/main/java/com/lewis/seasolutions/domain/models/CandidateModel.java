@@ -15,31 +15,28 @@ public class CandidateModel {
 
     @NotNull(message="Is required")
     @Size(min=10,max=20,message="size must be at least 10 characters")
-    @Pattern(regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
+    @Pattern(regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$", message = "Email is invalid")
     @NotBlank(message = "cannot be empty")
     private String email;
 
     @Size(min = 5, max = 20, message = "Doc size must be at least 5 characters")
     @NotNull(message="Is required")
-    @Pattern(regexp = "^[0-9]*$")
+    @Pattern(regexp = "^[0-9]*$", message = "Cannot contain letters")
     @NotBlank(message = "cannot be empty")
     private String doc;
     private Long roleId;
 
     @NotNull(message="Is required")
-    @NotBlank(message = "cannot be empty")
-
     private List<RoleModel> roles = new ArrayList<>();
 
     @NotNull(message="Is required")
-    @Pattern(regexp = "^(ftp|http|https):\\/\\/[^ \"]+$")
+    @Pattern(regexp = "^(ftp|http|https):\\/\\/[^ \"]+$", message = "Portfolio format is invalid")
     @NotBlank(message = "cannot be empty")
     private String portfolio;
 
     private Long stateCodeId;
 
     @NotNull(message="Is required")
-    @NotBlank(message = "cannot be empty")
     private List<StateCodeModel> stateCodes = new ArrayList<>();
 
     public Long getId() {
