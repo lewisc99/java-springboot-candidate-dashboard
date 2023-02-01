@@ -187,4 +187,13 @@ public class CandidateControllerTests {
         ModelAndView modelAndView = mvcResult.getModelAndView();
         ModelAndViewAssert.assertViewName(modelAndView, "candidate/error-not-found");
     }
+
+    @Test
+    @DisplayName("Invalid Url Redirect to Page-no-found")
+    public void InvalidUrl() throws Exception
+    {
+        MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get("/anyparameter"))
+                .andExpect(status().is4xxClientError()).andReturn();
+
+    }
 }
