@@ -1,18 +1,45 @@
 package com.lewis.seasolutions.domain.models;
 
+import javax.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CandidateModel {
     private Long id;
+
+    @NotNull(message="Is required")
+    @NotBlank(message = "cannot be empty")
+    @Size(min=1,max=10,message="Username Size must be at least 1")
+    @Pattern(regexp = "[a-zA-Z]+")
     private String username;
+
+    @NotNull(message="Is required")
+    @Size(min=10,max=20,message="size must be at least 10 characters")
+    @Pattern(regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
+    @NotBlank(message = "cannot be empty")
     private String email;
+
+    @Size(min = 5, max = 20, message = "Doc size must be at least 5 characters")
+    @NotNull(message="Is required")
+    @Pattern(regexp = "^[0-9]*$")
+    @NotBlank(message = "cannot be empty")
     private String doc;
     private Long roleId;
+
+    @NotNull(message="Is required")
+    @NotBlank(message = "cannot be empty")
+
     private List<RoleModel> roles = new ArrayList<>();
+
+    @NotNull(message="Is required")
+    @Pattern(regexp = "^(ftp|http|https):\\/\\/[^ \"]+$")
+    @NotBlank(message = "cannot be empty")
     private String portfolio;
 
     private Long stateCodeId;
+
+    @NotNull(message="Is required")
+    @NotBlank(message = "cannot be empty")
     private List<StateCodeModel> stateCodes = new ArrayList<>();
 
     public Long getId() {
