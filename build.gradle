@@ -24,9 +24,15 @@ dependencies {
     implementation group: 'org.modelmapper', name: 'modelmapper', version: '3.0.0'
 }
 
+
+bootJar {
+    archiveClassifier.set('boot')
+}
+
+jar {
+    archiveClassifier.set('')
+}
+
 tasks.named('test') {
 	useJUnitPlatform()
 }
-
-task stage(dependsOn: ['clean', 'installDist'])
-
