@@ -13,9 +13,13 @@ import com.lewis.seasolutions.services.contracts.RoleService;
 import com.lewis.seasolutions.services.contracts.StateCodeService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -57,11 +61,20 @@ public class CandidateController {
     }
 
     @PostMapping("candidate/createdCandidate")
-    public String save(@ModelAttribute("candidate") @Valid CandidateModel candidateModel)
+    public String save(@Valid  @ModelAttribute("candidate") CandidateModel candidateModel, BindingResult theBindingResult)
     {
-        Candidate candidate = convertCandidateModelToEntity(candidateModel);
-        candidateService.saveOrUpdate(candidate);
-        return "redirect:/";
+        if (theBindingResult.hasErrors())
+        {
+            ModelAndView modelAndView = new ModelAndView("candidate/candidate-create");
+            candidateModel = addPropertiesToCandidateModel(candidateModel);
+            modelAndView.addObject("candidate",candidateModel);
+            return "candidate/candidate-create";
+        }
+        else {
+            Candidate candidate = convertCandidateModelToEntity(candidateModel);
+            candidateService.saveOrUpdate(candidate);
+            return "redirect:/";
+        }
     }
 
     private Candidate convertCandidateModelToEntity(CandidateModel candidateModel)
@@ -116,4 +129,5 @@ public class CandidateController {
         candidateService.delete(id);
         return "redirect:/";
     }
+
 }
