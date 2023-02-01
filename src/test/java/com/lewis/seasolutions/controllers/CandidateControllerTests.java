@@ -23,6 +23,10 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @TestPropertySource("/application-test.properties")
@@ -47,31 +51,53 @@ public class CandidateControllerTests {
     @Autowired
     private CandidateModel candidateModel;
 
+    @PersistenceContext
+    private EntityManager entityManager;
+
 
     @BeforeEach
     public void beforeEach()
     {
         candidateModel.setId(4L);
         candidateModel.setUsername("Josue Santos");
-        candidateModel.setDoc("1999393939393");
+        candidateModel.setDoc("19993931111");
         candidateModel.setEmail("josue.santos@gmail.com");
-        candidateModel.setPortfolio("www.josue.santos.com.br");
+        candidateModel.setPortfolio("josue.santos.com.br");
         candidateModel.setRoleId(3L);
         candidateModel.setStateCodeId(3L);
     }
 
 
-//    @Test
-//    @DisplayName("Create Candidate")
-//    public void CreateCandidate() throws Exception
-//    {
-//
-//        MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post("/candidate/createdCandidate").flashAttr("candidate",candidateModel)
-//                        )
-//                .andExpect(status().isOk()).andReturn();
-//        ModelAndView modelAndView = mvcResult.getModelAndView();
-//        ModelAndViewAssert.assertViewName(modelAndView, "redirect:/");
-//    }
+    @Test
+    @DisplayName("Create Candidate")
+    @Transactional
+    public void CreateCandidate() throws Exception
+    {
+        entityManager.createQuery("delete from Candidate").executeUpdate();
+        entityManager.flush();
+
+        MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post("/candidate/createdCandidate").flashAttr("candidate",candidateModel)
+                        )
+                .andExpect(status().is3xxRedirection()).andReturn();
+        ModelAndView modelAndView = mvcResult.getModelAndView();
+        ModelAndViewAssert.assertViewName(modelAndView, "redirect:/");
+    }
+
+    @Test
+    @DisplayName("Create Candidate Throws Validation")
+    @Transactional
+    public void CreateCandidateThrowsValidation() throws Exception
+    {
+        entityManager.createQuery("delete from Candidate").executeUpdate();
+        entityManager.flush();
+        candidateModel.setDoc("929383-a1/<script>=-20");
+
+        MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.post("/candidate/createdCandidate").flashAttr("candidate",candidateModel)
+                )
+                .andExpect(status().isOk()).andReturn();
+        ModelAndView modelAndView = mvcResult.getModelAndView();
+        ModelAndViewAssert.assertViewName(modelAndView, "candidate/candidate-create");
+    }
 
 
     @Test
