@@ -104,8 +104,8 @@ public class CandidateController {
         return "candidate/candidate-by-id";
     }
 
-    @GetMapping(value = "/candidate/{id}/update")
-    public String update(@PathVariable Long id, Model theModel)
+    @GetMapping(value = "/update")
+    public String update(@RequestParam("id") Long id, Model theModel)
     {
         Candidate candidate = candidateService.findById(id);
         CandidateModel candidateModel = mapper.map(candidate, CandidateModel.class);
@@ -114,9 +114,20 @@ public class CandidateController {
         return "candidate/candidate-update";
     }
 
-    @PostMapping("candidate/updatedCandidate")
-    public String update(@ModelAttribute("candidate") CandidateModel candidateModel)
+    @PostMapping("/updatedCandidate")
+    public String update(@Valid  @ModelAttribute("candidate") CandidateModel candidateModel, BindingResult theBindingResult)
     {
+        ModelAndView modelAndView;
+
+        if (theBindingResult.hasErrors()) {
+
+            modelAndView = new ModelAndView("candidate/candidate-update");
+            Candidate candidate = candidateService.findById(candidateModel.getId());
+            candidateModel = addPropertiesToCandidateModel(candidateModel);
+            candidateModel = mapper.map(candidate, CandidateModel.class);
+            modelAndView.addObject("candidate",candidateModel);
+            return "candidate/candidate-update";
+        }
         Candidate candidate = convertCandidateModelToEntity(candidateModel);
         candidateService.saveOrUpdate(candidate);
         return "redirect:/";
@@ -127,6 +138,13 @@ public class CandidateController {
     {
         candidateService.delete(id);
         return "redirect:/";
+    }
+
+    @InitBinder //this method iniciate before the controller.
+    public void initBinder(WebDataBinder dataBinder)
+    {
+        StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+        dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
     }
 
 }
