@@ -7,7 +7,7 @@ import java.util.List;
 public class CandidateModel {
     private Long id;
     @NotBlank(message = "cannot be empty")
-    @Size(min=1,max=12,message="Size must be between 1 and 10 characters")
+    @Size(min=5,max=15,message="Size must be between 5 and 15 characters")
     @Pattern(regexp = "[a-zA-Z][a-zA-Z ]+", message = "only letters")
     private String username;
     @Size(min=10,max=40,message="size must be between 10 and 40 characters")
