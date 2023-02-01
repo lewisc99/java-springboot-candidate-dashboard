@@ -14,7 +14,7 @@ public class CandidateModel {
     @Pattern(regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$", message = "Email is invalid")
     @NotBlank(message = "cannot be empty")
     private String email;
-    @Size(min = 10, max = 20, message = "Doc size must be at least 10 characters and max 20.")
+    @Size(min = 11, max = 11, message = "Doc size must be 11 numbers")
     @Pattern(regexp = "^[0-9]*$", message = "Cannot contain letters")
     @NotBlank(message = "cannot be empty")
     private String doc;

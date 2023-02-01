@@ -34,12 +34,9 @@ public class MvcExceptionHandler {
     {
         return "candidate/error-not-found";
     }
-
-
     @ExceptionHandler(RuntimeException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public String handleResourceNotFoundException() {
         return "candidate/error-not-found";
     }
-
 }
