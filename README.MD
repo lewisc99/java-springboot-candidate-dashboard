@@ -1,4 +1,4 @@
-<h1>## 🖼 Cadastro de Candidatos para Vaga na Area de TI</h1> <br/>
+<h1>## 🖼 Registration of Candidates for a position in the IT Area</h1> <br/>
 <hr>
 <br/>
 <h3>Description English</h3>
